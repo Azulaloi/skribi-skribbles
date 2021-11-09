@@ -1,0 +1,7 @@
+<%
+  let words = sk.has('tags') 
+    ? await js.words.getCountOfWordsInTags(sk.getEnv(), sk.v.tags)
+    : await js.words.getCountOfWords(sk)
+
+  int.dv.table(['Word', 'Count'], words.top, sk.child.el, sk.child.c, sk.ctx?.file?.path ?? "") 
+%>

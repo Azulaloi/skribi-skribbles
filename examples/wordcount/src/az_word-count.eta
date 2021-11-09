@@ -1,0 +1,9 @@
+<% 
+  if (sk.has('tags')) { 
+    let c = js.words.getWordCountInTags(sk.getEnv(), sk.v.tags)
+    int.dv.table(["Tag", "Files", "Words", "Characters", "Sentences"], c, sk.child.el, sk.child.c, sk.ctx?.file?.path ?? "")
+  } else {
+    let c = await js.words.getWordCountInFiles(sk.getEnv())
+    int.dv.table(["Files", "Words", "Characters", "Sentences"], c, sk.child.el, sk.child.c, sk.ctx?.file?.path ?? "")
+  }
+%>
