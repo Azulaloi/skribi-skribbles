@@ -37,8 +37,6 @@ async function getWordCountInFiles(env, filesIn) {
         .map((v) => { return v.value });
     })
 
-    console.log(values)
-
     let countFiles = 0
     let countWords = 0
     let countCharacters = 0
