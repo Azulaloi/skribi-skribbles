@@ -1,5 +1,0 @@
-<% sk.includeStyle('collapse') %>
-
-<% js.collapse.wrap.bind(sk.getEnv())() %>
-
-<%~ sk.v.con %>

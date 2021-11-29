@@ -18,7 +18,7 @@ class Collapsible {
         this.collapseTitleEl = this.collapseEl.createDiv({cls: CLS.COLLAPSIBLE_TITLEBAR})
         this.collapseContentEl = this.collapseEl.appendChild(createDiv({cls: CLS.COLLAPSIBLE_CONTENT}))		
     
-        this.collapseTitleTextEl = this.collapseTitleEl.createSpan({cls: CLS.COLLAPSIBLE_TITLETEXT, text: "Quick Facts"}) // todo: get default text from boxtype definition  
+        this.collapseTitleTextEl = this.collapseTitleEl.createSpan({cls: CLS.COLLAPSIBLE_TITLETEXT}) 
         this.collapseIndicator = createSpan({cls: CLS.COLLAPSIBLE_INDICATOR})
         this.collapseTitleEl.prepend(this.collapseIndicator)
 
@@ -42,12 +42,10 @@ class Collapsible {
 				if ((!this.collapseContentEl.hasAttribute("style")) )
 					this.collapseContentEl.setAttribute("style", `max-height: ${el.clientHeight + (el.clientHeight * 0.2)}px;`)
             });
-        
-    
         }
 }
 
-function wrap() {
+function wrap(title) {
     with(this) {
         sk.child.registerPost(() => {
             let s = sk.child.el.innerHTML
@@ -56,10 +54,11 @@ function wrap() {
             embed.innerHTML = s
             let col = new Collapsible(embed)
             obsidian.setIcon(col.collapseIndicator, "right-triangle")
+            col.collapseTitleTextEl.setText(title ?? '')
             sk.child.el.append(col.collapseEl)
             col.collapseContentEl.append(embed)
         })
     }
 }
 
-module.exports = {Collapsible, wrap}
+module.exports = {_name: 'collapse', Collapsible, wrap}

@@ -1,0 +1,5 @@
+<% sk.includeStyle('az_collapse') %>
+
+<% js.collapse.wrap.bind(sk.getEnv())(sk.v.title ?? '') %>
+
+<%~ sk.v.con %>
